@@ -1,3 +1,28 @@
+This project ("Muddlefog Tarot") was created by Timothy Threet as a final capstone project for Springboard Software Engineering bootcamp.
+
+Created December 2022 - January 2023
+
+Category: Lifestyle / Spiritual / Entertainment
+
+Usage:
+> Unregistered Guest can: 
+- Draw a random Tarot card for the day with meanings
+- Read about the history of Tarot
+
+> Registered Guest can:
+- All unregistered tasks
+- Log in and access/update profile information
+- Draw larger Tarot Spreads (3 and 9 card)
+- Log personal thoughts/comments on readings
+- Save favorite readings for revisiting
+
+
+Tarot Deck information and images courtesy of https://www.kaggle.com/datasets/lsind18/tarot-json
+
+Tech stack: React
+
+
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
