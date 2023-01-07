@@ -1,9 +1,4 @@
-.card {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    display: inline
-}
-
-.card-keyword {
+.card-keyword{
     text-transform: uppercase;
+    text-align:center;
 }
