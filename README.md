@@ -18,8 +18,9 @@ Usage:
 
 
 Tarot Deck information and images courtesy of https://www.kaggle.com/datasets/lsind18/tarot-json
+API for Stoic Philosopher quotes: https://stoicquotesapi.com/v1/api/quotes/random 
 
-Tech stack: React
+Tech stack: React, Node, PostgreSQL
 
 
 ---
