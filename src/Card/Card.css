@@ -1,4 +1,27 @@
-.card-keyword{
+.Card{
+
+
+}
+
+.Card-body{
+    width: 18rem;
+    background-color: white;
+    text-align: center;
+    border-radius: 10%;
+
+
+}
+
+.Card-keyword{
     text-transform: uppercase;
     text-align:center;
+  
 }
+
+.Card-img{
+    width: 266px;
+    height: 456px;
+    border-radius: 20px;
+}
+
+

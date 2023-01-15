@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import data from '../tarot-images.json';
 import './Card.css';
-import Card from 'react-bootstrap/Card';
+import backOfCard from '../cardImages/back.jpeg';
 
 // ↓↓↓ 78 Tarot Card Images imported for use - public domain ↓↓↓
 import cardImports from './cardImports';
 
 const TarotCard = () => {
-	let cards = data.cards;
-	let randomCardNumber = Math.floor(Math.random() * 78);
+	const [ isFlipped, setFlipped ] = useState(true);
+	const flip = () => {
+		setFlipped(!isFlipped);
+	};
+	console.log(isFlipped);
+
+	const cards = data.cards;
+	const randomCardNumber = Math.floor(Math.random() * 78);
 	let cardPull = {
 		name: cards[randomCardNumber].name,
 		image: cardImports[cards[randomCardNumber].img.split('.')[0]],
@@ -17,16 +23,16 @@ const TarotCard = () => {
 	};
 
 	return (
-		<Card style={{ width: '18rem' }} className='text-center'>
-			<Card.Img src={cardPull.image} alt={cardPull.name} />
-			<Card.Body>
-				<Card.Title>{cardPull.name}</Card.Title>
-				<Card.Text>
+		<div onClick={flip} className='Card'>
+			<img src={isFlipped ? backOfCard : cardPull.image} alt={cardPull.name} className='Card-img' />
+			<div className='Card-body'>
+				<p>{cardPull.name}</p>
+				<div>
 					{cardPull.affirmation}
-					<p className='card-keyword'>{cardPull.keywords.join(' ')}</p>
-				</Card.Text>
-			</Card.Body>
-		</Card>
+					<p className='Card-keyword'>{cardPull.keywords.join('  *  ')}</p>
+				</div>
+			</div>
+		</div>
 	);
 };
 
