@@ -19,6 +19,7 @@ function NavBar() {
 			<NavLink to='/resources' className='NavBar-NavLink'>
 				Resources
 			</NavLink>
+			<NavLink className='NavBar-NavLink'>Log In/Register</NavLink>
 		</div>
 	);
 }

@@ -11,7 +11,6 @@ const TarotCard = () => {
 	const flip = () => {
 		setFlipped(!isFlipped);
 	};
-	console.log(isFlipped);
 
 	const cards = data.cards;
 	const randomCardNumber = Math.floor(Math.random() * 78);
@@ -23,8 +22,13 @@ const TarotCard = () => {
 	};
 
 	return (
-		<div onClick={flip} className='Card'>
-			<img src={isFlipped ? backOfCard : cardPull.image} alt={cardPull.name} className='Card-img' />
+		<div className='Card'>
+			<img
+				src={isFlipped ? backOfCard : cardPull.image}
+				alt={cardPull.name}
+				className='Card-img'
+				onClick={flip}
+			/>
 			<div className='Card-body'>
 				<p>{cardPull.name}</p>
 				<div>

@@ -6,6 +6,7 @@ import History from './History/History';
 import Resources from './Resources/Resources';
 import Meanings from './Meanings/Meanings';
 import NavBar from './NavBar/NavBar';
+import Footer from './Footer/Footer';
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 					<Route exact path='/resources' element={<Resources />} />
 					<Route exact path='/meanings' element={<Meanings />} />
 				</Routes>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);
