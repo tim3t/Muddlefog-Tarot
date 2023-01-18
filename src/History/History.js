@@ -18,22 +18,22 @@ function History() {
 				beginning, they actually have a pretty clear lineage!
 			</p>
 			<ul className='History-UL'>
-				<li>1367 - The first known records of playing cards</li>
+				<li>1367 - The first known record of playing cards and card decks</li>
 				<li>
 					1377 - John de Rheinfelden writes of a style of deck containing 4 suits of 13 cards (much like
 					today's standard deck)
 				</li>
 				<li>
-					1440-1450 - The first documented Tarot decks appear in Italy, their original purpose to play games
+					1440-1450 - The first documented Tarot decks appear in Italy, their original purpose to play games.
+					In fact, it's likely that the word <em>tarot</em> derives from <em>tarocchi</em>, an Italian card
+					game that preceded tarot)
 				</li>
 				<li>
 					1750 - The earliest evidence of Tarot cards being used for cartomancy (card-based fortune telling)
 				</li>
 				<li>1780's - The popularization of 'esoteric' tarot reading begins in Paris</li>
 			</ul>
-			<p className='History-P'>
-				Today, the so-called 'standard' Tarot deck consists of 78 cards, split into two sections:
-			</p>
+			<p className='History-P'>Today, a 'standard' Tarot deck consists of 78 cards, split into two sections:</p>
 			<ul className='History-UL'>
 				<li>
 					The Major Arcana - 22 cards without suits representing broad themes such as The Lovers, The Moon,
@@ -44,6 +44,10 @@ function History() {
 					14 cards
 				</li>
 			</ul>
+			<p className='History-P'>
+				The Tarot Card images found in the website come from the original artwork of Pamela Colman Smith. These
+				iconic designs are featured in what are now called Rider-Waite-Smith (or RWS) decks.{' '}
+			</p>
 			<img src={m11} className='History-IMG2' />
 		</div>
 	);

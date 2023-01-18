@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import data from '../tarot-images.json';
 import './Card.css';
 import backOfCard from '../cardImages/back.jpeg';
@@ -14,26 +14,22 @@ const TarotCard = () => {
 
 	const cards = data.cards;
 	const randomCardNumber = Math.floor(Math.random() * 78);
-	let cardPull = {
+	const cardPull = {
 		name: cards[randomCardNumber].name,
 		image: cardImports[cards[randomCardNumber].img.split('.')[0]],
 		affirmation: cards[randomCardNumber].Affirmation,
 		keywords: cards[randomCardNumber].keywords
 	};
+	const [ card, setCard ] = useState(cardPull);
 
 	return (
 		<div className='Card'>
-			<img
-				src={isFlipped ? backOfCard : cardPull.image}
-				alt={cardPull.name}
-				className='Card-img'
-				onClick={flip}
-			/>
+			<img src={isFlipped ? backOfCard : card.image} alt={card.name} className='Card-img' onClick={flip} />
 			<div className='Card-body'>
-				<p>{cardPull.name}</p>
+				<p>{card.name}</p>
 				<div>
-					{cardPull.affirmation}
-					<p className='Card-keyword'>{cardPull.keywords.join('  *  ')}</p>
+					{card.affirmation}
+					<p className='Card-keyword'>{card.keywords.join('  *  ')}</p>
 				</div>
 			</div>
 		</div>

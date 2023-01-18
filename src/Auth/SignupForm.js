@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import './SignupForm.css';
 
 function SignupForm() {
-	const history = useHistory();
 	const [ formData, setFormData ] = useState({ username: '', password: '', firstName: '', lastName: '', email: '' });
-	const [ formErrors, setFormErrors ] = useState([]);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		let result = await SignupForm(formData);
-		if (result.success) {
-			history.push('/home');
-		}
-		else {
-			setFormErrors(result.errors);
-		}
+		console.log('Success!');
 	}
 
 	function handleChange(e) {
@@ -24,7 +16,7 @@ function SignupForm() {
 
 	return (
 		<div className='SignupForm'>
-			<h2>Sign Up</h2>
+			<h2 className='SignupForm-Head'>Sign Up</h2>
 			<form onSubmit={handleSubmit}>
 				<div className='form-group'>
 					<label>Username</label>

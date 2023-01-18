@@ -2,6 +2,6 @@ import React from 'react';
 import SignupForm from '../Auth/SignupForm';
 
 const SignUp = () => {
-	return <SignUpForm />;
+	return <SignupForm />;
 };
 export default SignUp;
