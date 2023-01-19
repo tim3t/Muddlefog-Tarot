@@ -9,14 +9,14 @@ const Home = () => {
 		setCardDraws(cardDraws.concat(<TarotCard />));
 	}
 	return (
-		<React.Fragment>
+		<div className='Home'>
 			<div className='d-grid gap-2'>
-				<Button onClick={addCard} variant='success' size='lg'>
+				<Button onClick={cardDraws.length != 3 ? addCard : null} variant='success' size='lg'>
 					Click to draw a Tarot Card
 				</Button>
 			</div>
 			<div className='CardTable'>{cardDraws}</div>
-		</React.Fragment>
+		</div>
 	);
 };
 

@@ -45,7 +45,7 @@ function History() {
 				</li>
 			</ul>
 			<p className='History-P'>
-				The Tarot Card images found in the website come from the original artwork of Pamela Colman Smith. These
+				The Tarot Card images used in this website come from the original artwork of Pamela Colman Smith. These
 				iconic designs are featured in what are now called Rider-Waite-Smith (or RWS) decks.{' '}
 			</p>
 			<img src={m11} className='History-IMG2' />

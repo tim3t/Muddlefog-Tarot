@@ -2,6 +2,8 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import './Meanings.css';
 import data from '../tarot-images.json';
+const m01 = require('../cardImages/m01.jpg');
+const m21 = require('../cardImages/m21.jpg');
 
 const Meanings = () => {
 	const cards = data.cards;
@@ -9,7 +11,7 @@ const Meanings = () => {
 	return (
 		<div>
 			<h1 className='Meanings-Head'>The Meanings of Each Tarot Card</h1>
-
+			<img src={m01} className='Meaning-IMG1' />
 			<p className='Meanings-P'>
 				Tarot Card imagery is evocative and often dream-like, so each card can mean whatever you want it to
 				mean! For example, if you draw the Six of Wands and think, "He looks kind of lazy, maybe I should relax
@@ -51,6 +53,7 @@ const Meanings = () => {
 					})}
 				</tbody>
 			</Table>
+			<img src={m21} className='Meaning-IMG2' />
 		</div>
 	);
 };

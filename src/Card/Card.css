@@ -1,14 +1,12 @@
 .Card{
-
-
+    margin: 1%;
 }
 
 .Card-body{
     width: 18rem;
     background-color: white;
     text-align: center;
-    border-radius: 10%;
-
+    display: none;
 
 }
 
@@ -24,4 +22,9 @@
     border-radius: 20px;
 }
 
+.Card-img:hover + .Card-body{
+    display:inline-flex;
+
+    
+}
 

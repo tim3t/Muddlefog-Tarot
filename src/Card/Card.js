@@ -26,11 +26,9 @@ const TarotCard = () => {
 		<div className='Card'>
 			<img src={isFlipped ? backOfCard : card.image} alt={card.name} className='Card-img' onClick={flip} />
 			<div className='Card-body'>
-				<p>{card.name}</p>
-				<div>
-					{card.affirmation}
-					<p className='Card-keyword'>{card.keywords.join('  *  ')}</p>
-				</div>
+				{card.name}
+				{card.affirmation}
+				<p className='Card-keyword'>{card.keywords.join('  *  ')}</p>
 			</div>
 		</div>
 	);

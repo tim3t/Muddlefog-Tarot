@@ -3,7 +3,24 @@
     margin-top: 25px;
     margin-bottom: 25px;
 }
+.Meaning-IMG1{
+    position: absolute;
+    left: 22px;
+    top: 100px;
+    opacity: 0.5;
+    width: 15em;
+    transform: rotate(-19deg)
+}
 
+.Meaning-IMG2{
+    position: absolute;
+    right: 55px;
+    top: 110px;
+    opacity: 0.5;
+    width: 15em;
+    transform: rotate(16deg);
+
+}
 .Meanings-P {
     text-align: center;
     font-size: 1.4em;
