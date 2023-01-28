@@ -32,6 +32,10 @@ function History() {
 					1750 - The earliest evidence of Tarot cards being used for cartomancy (card-based fortune telling)
 				</li>
 				<li>1780's - The popularization of 'esoteric' tarot reading begins in Paris</li>
+				<li>
+					1909 - Dr. Arthur Waite commissioned Pamela Smith to produce a tarot deck to appeal to the world of
+					art, and the result was the cards seen on this website.
+				</li>
 			</ul>
 			<p className='History-P'>Today, a 'standard' Tarot deck consists of 78 cards, split into two sections:</p>
 			<ul className='History-UL'>
@@ -45,8 +49,8 @@ function History() {
 				</li>
 			</ul>
 			<p className='History-P'>
-				The Tarot Card images used in this website come from the original artwork of Pamela Colman Smith. These
-				iconic designs are featured in what are now called Rider-Waite-Smith (or RWS) decks.{' '}
+				As mentioned above, the tarot card images used in this website come from the original artwork of Pamela
+				Colman Smith. These iconic designs are featured in what are now called Rider-Waite-Smith (or RWS) decks.
 			</p>
 			<img src={m11} className='History-IMG2' />
 		</div>

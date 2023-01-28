@@ -1,14 +1,14 @@
 .Card{
     margin: 1%;
+    cursor: pointer;
 }
 
 .Card-body{
     width: 18rem;
     background-color: white;
     text-align: center;
-    display: none;
-
 }
+
 
 .Card-keyword{
     text-transform: uppercase;
@@ -20,11 +20,20 @@
     width: 266px;
     height: 456px;
     border-radius: 20px;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+    transition: transform 1s;
 }
 
-.Card-img:hover + .Card-body{
-    display:inline-flex;
+.Card-img:active{
+    transform: translateX(-100%) rotateY(-180deg);
 
-    
+}
+
+.Card-name{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(18, 109, 0);
+    text-shadow: 1px 1px 1px greenyellow
 }
 

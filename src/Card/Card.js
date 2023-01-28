@@ -18,18 +18,20 @@ const TarotCard = () => {
 		name: cards[randomCardNumber].name,
 		image: cardImports[cards[randomCardNumber].img.split('.')[0]],
 		affirmation: cards[randomCardNumber].Affirmation,
+		archetype: cards[randomCardNumber].Archetype,
 		keywords: cards[randomCardNumber].keywords
 	};
 	const [ card, setCard ] = useState(cardPull);
-
 	return (
 		<div className='Card'>
 			<img src={isFlipped ? backOfCard : card.image} alt={card.name} className='Card-img' onClick={flip} />
-			<div className='Card-body'>
-				{card.name}
-				{card.affirmation}
-				<p className='Card-keyword'>{card.keywords.join('  *  ')}</p>
-			</div>
+			{isFlipped ? null : (
+				<div className='Card-body'>
+					<p className='Card-name'>{card.name}</p>
+					<p>{card.affirmation ? card.affirmation : card.archetype}</p>
+					<p className='Card-keyword'>{card.keywords.join('  *  ')}</p>
+				</div>
+			)}
 		</div>
 	);
 };
