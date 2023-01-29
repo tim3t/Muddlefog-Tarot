@@ -5,9 +5,11 @@
 }
 
 .CardTable{
-    width: 100vw;
+    width: 60vw;
     margin-top: 10px;
-    display: inline-flex;
+    margin-left: auto;
+    margin-right:auto;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
@@ -25,6 +27,29 @@
 }
 
 .Home-Button-Clear{
-    border: 2px red solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;    
+    border: 2px rgb(255, 161, 161) solid;
     margin-top: 40px;
+
+}
+
+@media screen and (min-width: 0px) and (max-width: 550px){
+  .Home-Button-Layout{
+    display: flex;
+    flex-direction: column;
+    margin-left:auto;
+    margin-right:auto;
+}
+  .Home-Button-Draw{
+    margin:10px;
+  }
+}
+
+@media screen and (min-width: 550px) and (max-width: 1100px){
+
+  .Home-Button-Draw{
+    margin:10px;
+  }
 }

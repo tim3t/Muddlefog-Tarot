@@ -6,7 +6,6 @@ const logo = require('../muddlefog_logo.png');
 
 function NavBar({ logout }) {
 	const currentUser = useContext(UserContext);
-	console.debug('Nav', 'currentUser=', currentUser);
 
 	function loggedOutNav() {
 		return (
@@ -45,6 +44,9 @@ function NavBar({ logout }) {
 				</NavLink>
 				<NavLink to='/resources' className='NavBar-NavLink'>
 					Resources
+				</NavLink>
+				<NavLink to='/profile' className='NavBar-NavLink'>
+					Profile
 				</NavLink>
 				<Link to='/' onClick={logout} className='NavBar-NavLink'>
 					LogOut {currentUser.username}

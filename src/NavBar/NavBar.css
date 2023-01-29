@@ -2,11 +2,11 @@
     background-color: rgb(29, 0, 40);
     text-align: center;
     font-weight: bold;
-    padding: 1em;
+    padding-top: 1em;
   }
   
   .NavBar a {
-    padding: 0.5em 0;
+    padding: 0.5em;
     width: 10em;
     display: inline-block;
     color: white;
@@ -32,3 +32,25 @@
     border-bottom-right-radius: 30%;
     box-shadow: 3px 3px 4px grey;
   }
+
+@media screen and (min-width:0px) and (max-width:550px) {
+  .NavBar-Logo{
+    display:none;
+  }
+  .NavBar a {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width:550px) and (max-width:1100px){
+  .NavBar-Logo{
+    position: absolute;
+    left: 5px;
+    width: 5rem;
+    /* opacity: 0.6;
+    border-bottom-right-radius: 30%;
+    box-shadow: 3px 3px 4px grey; */
+  }
+}

@@ -6,7 +6,7 @@ import backOfCard from '../cardImages/back.jpeg';
 // ↓↓↓ 78 Tarot Card Images imported for use - public domain ↓↓↓
 import cardImports from './cardImports';
 
-const TarotCard = () => {
+const TarotCard = ({ toggle }) => {
 	const [ isFlipped, setFlipped ] = useState(true);
 	const flip = () => {
 		setFlipped(!isFlipped);
@@ -21,6 +21,14 @@ const TarotCard = () => {
 		archetype: cards[randomCardNumber].Archetype,
 		keywords: cards[randomCardNumber].keywords
 	};
+
+	useEffect(
+		() => {
+			localStorage.setItem('cardDraw', JSON.stringify(cardPull));
+		},
+		[ cardPull ]
+	);
+
 	const [ card, setCard ] = useState(cardPull);
 	return (
 		<div className='Card'>

@@ -12,10 +12,12 @@ import SignUp from './LogIn_SignUp/SignUp';
 import NavBar from './NavBar/NavBar';
 import Footer from './Footer/Footer';
 import jwt_decode from 'jwt-decode';
+import Profile from './Profile/Profile';
 
 export const TOKEN_STORAGE_ID = 'tarot-token';
 
 function App() {
+	const [ infoLoaded, setInfoLoaded ] = useState(false);
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ token, setToken ] = useLocalStorage(TOKEN_STORAGE_ID);
 
@@ -33,7 +35,9 @@ function App() {
 						setCurrentUser(null);
 					}
 				}
+				setInfoLoaded(true);
 			}
+			setInfoLoaded(false);
 			getCurrentUser();
 		},
 		[ token ]
@@ -64,6 +68,8 @@ function App() {
 			return { success: false, errors };
 		}
 	}
+
+	if (!infoLoaded) return <p>Loading...</p>;
 	return (
 		<div>
 			<BrowserRouter>
@@ -75,6 +81,7 @@ function App() {
 						<Route exact path='/resources' element={<Resources />} />
 						<Route exact path='/meanings' element={<Meanings />} />
 						<Route exact path='/signup' element={<SignUp signup={signup} login={login} />} />
+						<Route exact path='/profile' element={<Profile />} />
 					</Routes>
 					<Footer />
 				</UserContext.Provider>

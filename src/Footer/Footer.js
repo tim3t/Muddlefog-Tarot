@@ -10,7 +10,7 @@ const Footer = () => {
 			{currentUser ? (
 				<p>You are signed in as {currentUser.username}</p>
 			) : (
-				<p>Sign up or Register for more features!</p>
+				<p>Log in or Register for more features!</p>
 			)}
 			<p>Muddlefog Tarot {today.getFullYear()}</p>
 		</div>

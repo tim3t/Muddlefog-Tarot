@@ -10,20 +10,11 @@ const Home = () => {
 		month: 'short',
 		year: 'numeric'
 	});
-	console.log(today);
+
 	const currentUser = useContext(UserContext);
-	console.debug('Homepage', 'currentUser=', currentUser);
 	const [ cardDraws, setCardDraws ] = useState([]);
 
-	// useEffect(
-	// 	() => {
-	// 		const savedCards = JSON.parse(localStorage.getItem('cardDraws'));
-	// 		if (savedCards) {
-	// 			setCardDraws(savedCards);
-	// 		}
-	// 	},
-	// 	[ cardDraws ]
-	// );
+	console.debug('cardDraws=', cardDraws);
 
 	function addCard() {
 		setCardDraws(cardDraws.concat(<TarotCard />));
@@ -31,12 +22,9 @@ const Home = () => {
 	function clearCards() {
 		setCardDraws([]);
 	}
-	useEffect(
-		() => {
-			localStorage.setItem('cardDraws', JSON.stringify(cardDraws));
-		},
-		[ cardDraws ]
-	);
+
+	// ↓↓↓ Homepage render when not logged in ↓↓↓
+	// Will only allow for drawing 1 card at a time
 
 	function loggedOutHome() {
 		return (
@@ -44,7 +32,7 @@ const Home = () => {
 				<div className='Home-Button-Layout'>
 					<Button
 						className='Home-Button-Draw'
-						onClick={cardDraws.length != 1 ? addCard : null}
+						onClick={cardDraws.length < 1 ? addCard : null}
 						variant='success'
 						size='lg'
 					>
@@ -53,7 +41,7 @@ const Home = () => {
 				</div>
 				<div className='CardTable'>{cardDraws}</div>
 				{!cardDraws.length ? null : (
-					<div className='d-grid gap-2 Home-Button-Clear'>
+					<div className='Home-Button-Clear'>
 						<Button onClick={clearCards} variant='light' size='lg'>
 							Clear all cards
 						</Button>
@@ -63,16 +51,23 @@ const Home = () => {
 		);
 	}
 
+	// ↓↓↓ Homepage render when logged in ↓↓↓
+	// Will allow for 1, 3, and 9 card spreads
 	function loggedInHome() {
 		return (
 			<div className='Home'>
 				<h3 className='Home-User-Head'>
 					{currentUser.username}'s Tarot Spread for {today}
 				</h3>
+				{/* <label htmlFor='checkbox' className='Home-switch'>
+					Toggle Meanings
+					<input type='checkbox' />
+					<span className='Home-switch-slider round' />
+				</label> */}
 				<div className='Home-Button-Layout'>
 					<Button
 						className='Home-Button-Draw'
-						onClick={cardDraws.length != 1 ? addCard : null}
+						onClick={cardDraws.length < 1 ? addCard : null}
 						variant='success'
 						size='lg'
 					>
@@ -80,7 +75,7 @@ const Home = () => {
 					</Button>
 					<Button
 						className='Home-Button-Draw'
-						onClick={cardDraws.length != 3 ? addCard : null}
+						onClick={cardDraws.length < 3 ? addCard : null}
 						variant='info'
 						size='lg'
 					>
@@ -88,13 +83,14 @@ const Home = () => {
 					</Button>
 					<Button
 						className='Home-Button-Draw'
-						onClick={cardDraws.length != 9 ? addCard : null}
+						onClick={cardDraws.length < 9 ? addCard : null}
 						variant='warning'
 						size='lg'
 					>
 						Click to draw a nine card spread
 					</Button>
 				</div>
+
 				<div className='CardTable'>{cardDraws}</div>
 				{!cardDraws.length ? null : (
 					<div className='d-grid gap-2 Home-Button-Clear'>
