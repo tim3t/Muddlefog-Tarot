@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import Table from 'react-bootstrap/Table';
 import './Profile.css';
 import UserContext from '../Auth/UserContext';
+import { Link } from 'react-router-dom';
+import { render } from '@testing-library/react';
 const editIcon = require('../edit.png');
 
 const Profile = () => {
-	const currentUser = useContext(UserContext);
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 	console.debug('Profile', currentUser);
 	return (
 		<div>
@@ -28,7 +30,9 @@ const Profile = () => {
 						<td>{currentUser.lastName}</td>
 						<td>{currentUser.email}</td>
 						<td>
-							<img src={editIcon} width='20px' />
+							<Link to='/edit'>
+								<img src={editIcon} width='20px' />
+							</Link>
 						</td>
 					</tr>
 				</tbody>

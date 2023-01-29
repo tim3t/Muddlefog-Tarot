@@ -13,6 +13,7 @@ import NavBar from './NavBar/NavBar';
 import Footer from './Footer/Footer';
 import jwt_decode from 'jwt-decode';
 import Profile from './Profile/Profile';
+import EditForm from './Profile/EditForm';
 
 export const TOKEN_STORAGE_ID = 'tarot-token';
 
@@ -20,6 +21,7 @@ function App() {
 	const [ infoLoaded, setInfoLoaded ] = useState(false);
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ token, setToken ] = useLocalStorage(TOKEN_STORAGE_ID);
+	console.debug('currentUser', currentUser);
 
 	useEffect(
 		function loadUserInfo() {
@@ -73,7 +75,7 @@ function App() {
 	return (
 		<div>
 			<BrowserRouter>
-				<UserContext.Provider value={currentUser}>
+				<UserContext.Provider value={{ currentUser, setCurrentUser }}>
 					<NavBar logout={logout} />
 					<Routes>
 						<Route exact path='/' element={<Home />} />
@@ -82,6 +84,7 @@ function App() {
 						<Route exact path='/meanings' element={<Meanings />} />
 						<Route exact path='/signup' element={<SignUp signup={signup} login={login} />} />
 						<Route exact path='/profile' element={<Profile />} />
+						<Route exact path='/edit' element={<EditForm />} />
 					</Routes>
 					<Footer />
 				</UserContext.Provider>

@@ -11,7 +11,7 @@ const Home = () => {
 		year: 'numeric'
 	});
 
-	const currentUser = useContext(UserContext);
+	const { currentUser } = useContext(UserContext);
 	const [ cardDraws, setCardDraws ] = useState([]);
 
 	console.debug('cardDraws=', cardDraws);

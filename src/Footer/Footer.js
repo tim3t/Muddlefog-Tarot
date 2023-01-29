@@ -3,7 +3,7 @@ import './Footer.css';
 import UserContext from '../Auth/UserContext';
 
 const Footer = () => {
-	const currentUser = useContext(UserContext);
+	const { currentUser } = useContext(UserContext);
 	const today = new Date();
 	return (
 		<div className='Footer'>

@@ -5,7 +5,7 @@ import './NavBar.css';
 const logo = require('../muddlefog_logo.png');
 
 function NavBar({ logout }) {
-	const currentUser = useContext(UserContext);
+	const { currentUser } = useContext(UserContext);
 
 	function loggedOutNav() {
 		return (
