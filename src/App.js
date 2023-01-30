@@ -21,7 +21,6 @@ function App() {
 	const [ infoLoaded, setInfoLoaded ] = useState(false);
 	const [ currentUser, setCurrentUser ] = useState(null);
 	const [ token, setToken ] = useLocalStorage(TOKEN_STORAGE_ID);
-	console.debug('currentUser', currentUser);
 
 	useEffect(
 		function loadUserInfo() {

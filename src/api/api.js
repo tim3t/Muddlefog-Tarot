@@ -50,6 +50,11 @@ class TarotApi {
 		return res.user;
 	}
 
+	static async newSpread(username, data) {
+		let res = await this.request(`spreads/${username}`, data, 'post');
+		return res.newSpread;
+	}
+
 	static async getSpreads(username) {
 		let res = await this.request(`spreads/${username}`);
 		return res.userSpreads;

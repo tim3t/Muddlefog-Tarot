@@ -3,6 +3,7 @@ import TarotCard from '../Card/Card';
 import './Home.css';
 import { Button } from 'react-bootstrap';
 import UserContext from '../Auth/UserContext';
+import SaveSpreadForm from '../Profile/SaveSpreadForm';
 
 const Home = () => {
 	const today = new Date().toLocaleDateString('en-GB', {
@@ -13,11 +14,13 @@ const Home = () => {
 
 	const { currentUser } = useContext(UserContext);
 	const [ cardDraws, setCardDraws ] = useState([]);
-
-	console.debug('cardDraws=', cardDraws);
+	const [ saveForm, setSaveForm ] = useState();
 
 	function addCard() {
 		setCardDraws(cardDraws.concat(<TarotCard />));
+	}
+	function renderSaveForm() {
+		setSaveForm(<SaveSpreadForm />);
 	}
 	function clearCards() {
 		setCardDraws([]);
@@ -93,11 +96,19 @@ const Home = () => {
 
 				<div className='CardTable'>{cardDraws}</div>
 				{!cardDraws.length ? null : (
-					<div className='d-grid gap-2 Home-Button-Clear'>
-						<Button onClick={clearCards} variant='light' size='lg'>
-							Clear all cards
-						</Button>
-					</div>
+					<React.Fragment>
+						<div className='d-grid gap-2 Home-Button-Save'>
+							<Button onClick={renderSaveForm} variant='light' size='lg'>
+								Save This Spread
+							</Button>
+						</div>
+						<div>{saveForm}</div>
+						<div className='d-grid gap-2 Home-Button-Clear'>
+							<Button onClick={clearCards} variant='light' size='lg'>
+								Clear all cards
+							</Button>
+						</div>
+					</React.Fragment>
 				)}
 			</div>
 		);
