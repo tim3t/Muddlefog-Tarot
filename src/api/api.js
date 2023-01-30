@@ -49,6 +49,11 @@ class TarotApi {
 		let res = await this.request(`users/${username}`, data, 'patch');
 		return res.user;
 	}
+
+	static async getSpreads(username) {
+		let res = await this.request(`spreads/${username}`);
+		return res.userSpreads;
+	}
 }
 
 export default TarotApi;

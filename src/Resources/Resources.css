@@ -36,3 +36,12 @@
 .Resources-UL ul {
     list-style: none;
 }
+
+@media screen and (max-width:900px){
+    .Resources-P{
+        width:80vw;
+    }
+    .Resources-UL{
+        width:80vw;
+    }
+}

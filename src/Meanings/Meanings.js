@@ -30,9 +30,9 @@ const Meanings = () => {
 					<tr>
 						<th>Name</th>
 						<th>Keywords</th>
-						<th>Meanings (Light)</th>
-						<th>Meanings (Dark)</th>
-						<th>Archetype/Affirmation</th>
+						<th className='Meanings-Light'>Meanings (Light)</th>
+						<th className='Meanings-Shadow'>Meanings (Dark)</th>
+						<th>Archetype / Affirmation</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,8 +44,8 @@ const Meanings = () => {
 									<td className='Meanings-Keywords'>
 										{card.keywords[0]} * {card.keywords[1]}
 									</td>
-									<td>{card.meanings.light[0]}</td>
-									<td>{card.meanings.shadow[0]}</td>
+									<td className='Meanings-Light'>{card.meanings.light[0]}</td>
+									<td className='Meanings-Shadow'>{card.meanings.shadow[0]}</td>
 									<td>{card.Affirmation ? card.Affirmation : card.Archetype}</td>
 								</tr>
 							</React.Fragment>

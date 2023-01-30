@@ -1,19 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import TarotApi from '../api/api';
 import Table from 'react-bootstrap/Table';
 import './Profile.css';
 import UserContext from '../Auth/UserContext';
 import { Link } from 'react-router-dom';
-import { render } from '@testing-library/react';
+
 const editIcon = require('../edit.png');
 
 const Profile = () => {
 	const { currentUser, setCurrentUser } = useContext(UserContext);
-	console.debug('Profile', currentUser);
+	const [ spreads, setSpreads ] = useState();
+
+	useEffect(function getSpreadsOnMount() {
+		search();
+	}, []);
+
+	async function search(username) {
+		const currentUsername = currentUser.username;
+		let spreads = await TarotApi.getSpreads(currentUsername);
+		setSpreads(spreads);
+	}
+
+	if (!spreads) return <p>Loading...</p>;
+
 	return (
 		<div>
 			<h1 className='Meanings-Head'>Your Profile and Saved Spreads</h1>
-			<p className='Meanings-P'>Explanation Paragraph</p>
-			<Table striped bordered hover>
+
+			<Table responsive striped bordered hover size='sm'>
 				<thead>
 					<tr>
 						<th>Username</th>
@@ -37,7 +51,34 @@ const Profile = () => {
 					</tr>
 				</tbody>
 			</Table>
-			<p className='Meanings-P'>Explanation Paragraph for Spreads Chart</p>
+			<p className='Profile-P'>Your Saved Spreads:</p>
+			<Table responsive striped bordered hover size='sm'>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Title</th>
+						<th>Spread</th>
+						<th>Comments</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					{spreads.map((spread, key) => {
+						return (
+							<React.Fragment>
+								<tr>
+									<td>{spread.timedate}</td>
+
+									<td>{spread.title}</td>
+									<td>{spread.spread}</td>
+									<td>{spread.comments}</td>
+									<td>X</td>
+								</tr>
+							</React.Fragment>
+						);
+					})}
+				</tbody>
+			</Table>
 		</div>
 	);
 };

@@ -23,7 +23,7 @@
 
 .History-P {
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.2em;
     width: 40vw;
     margin-left: auto;
     margin-right: auto;
@@ -40,4 +40,29 @@
     list-style: none;
     color: rgba(63, 0, 88, 0.8);
     text-shadow: 1px 1px 1px rgba(63, 0, 88, 0.8)
+}
+
+@media screen and (max-width:1098px){
+    .History-IMG1{
+       display:none;}
+    
+    .History-IMG2{
+       display:none;
+    
+    }
+
+    .History-P {
+
+        font-size: 1.4em;
+        width: 80vw;
+
+    }
+
+    .History-UL{
+
+        font-size: 1.4em;
+        width: 80vw;
+
+
+    }
 }

@@ -6,13 +6,14 @@ import backOfCard from '../cardImages/back.jpeg';
 // ↓↓↓ 78 Tarot Card Images imported for use - public domain ↓↓↓
 import cardImports from './cardImports';
 
-const TarotCard = ({ toggle }) => {
+const TarotCard = ({}) => {
 	const [ isFlipped, setFlipped ] = useState(true);
 	const flip = () => {
 		setFlipped(!isFlipped);
 	};
 
 	const cards = data.cards;
+	let cardArray = [];
 	const randomCardNumber = Math.floor(Math.random() * 78);
 	const cardPull = {
 		name: cards[randomCardNumber].name,
@@ -22,14 +23,14 @@ const TarotCard = ({ toggle }) => {
 		keywords: cards[randomCardNumber].keywords
 	};
 
+	const [ card, setCard ] = useState(cardPull);
 	useEffect(
 		() => {
-			localStorage.setItem('cardDraw', JSON.stringify(cardPull));
+			cardArray.push(card);
+			localStorage.setItem('cardDraw', JSON.stringify(cardArray));
 		},
 		[ cardPull ]
 	);
-
-	const [ card, setCard ] = useState(cardPull);
 	return (
 		<div className='Card'>
 			<img src={isFlipped ? backOfCard : card.image} alt={card.name} className='Card-img' onClick={flip} />
