@@ -12,3 +12,7 @@
     margin-right: auto;
     margin-bottom: 25px;
 }
+
+.Profile-DeleteBtn{
+    cursor:pointer;
+}

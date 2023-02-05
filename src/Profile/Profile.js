@@ -1,15 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TarotApi from '../api/api';
 import Table from 'react-bootstrap/Table';
 import './Profile.css';
 import UserContext from '../Auth/UserContext';
 import { Link } from 'react-router-dom';
+import DeleteConfirm from '../common/DeleteConfirm';
 
 const editIcon = require('../edit.png');
 
 const Profile = () => {
+	const history = useNavigate();
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [ spreads, setSpreads ] = useState();
+	const [ id, setId ] = useState(null);
+	const [ displayConfirmationModal, setDisplayConfirmationModal ] = useState(false);
+	const [ deleteMessage, setDeleteMessage ] = useState('Are you sure you want to delete this spread?');
 
 	useEffect(function getSpreadsOnMount() {
 		search();
@@ -19,6 +25,22 @@ const Profile = () => {
 		const currentUsername = currentUser.username;
 		let spreads = await TarotApi.getSpreads(currentUsername);
 		setSpreads(spreads);
+	}
+
+	const showDeleteModal = (id) => {
+		setId(id);
+		setDisplayConfirmationModal(true);
+	};
+
+	const hideConfirmationModal = () => {
+		setDisplayConfirmationModal(false);
+	};
+
+	async function deleteSpread(e) {
+		const currentUsername = currentUser.username;
+		await TarotApi.deleteSpread(currentUsername, id);
+		setDisplayConfirmationModal(false);
+		history(0);
 	}
 
 	if (!spreads) return <p>Loading...</p>;
@@ -72,13 +94,26 @@ const Profile = () => {
 									<td>{spread.title}</td>
 									<td>{spread.spread}</td>
 									<td>{spread.comments}</td>
-									<td>X</td>
+									<td
+										className='Profile-DeleteBtn'
+										id={spread.id}
+										onClick={() => showDeleteModal(spread.id)}
+									>
+										X
+									</td>
 								</tr>
 							</React.Fragment>
 						);
 					})}
 				</tbody>
 			</Table>
+			<DeleteConfirm
+				showModal={displayConfirmationModal}
+				confirmModal={deleteSpread}
+				hideModal={hideConfirmationModal}
+				id={id}
+				message={deleteMessage}
+			/>
 		</div>
 	);
 };

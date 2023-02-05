@@ -2,11 +2,12 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TarotApi from '../api/api';
 import UserContext from '../Auth/UserContext';
+import Alert from '../common/Alert';
 
 function EditForm() {
 	const history = useNavigate();
 	const { currentUser, setCurrentUser } = useContext(UserContext);
-	console.debug(currentUser);
+
 	const [ formData, setFormData ] = useState({
 		firstName: currentUser.firstName,
 		lastName: currentUser.lastName,
@@ -40,7 +41,8 @@ function EditForm() {
 		try {
 			updatedUser = await TarotApi.saveProfile(username, profileData);
 		} catch (errors) {
-			console.debug(errors);
+			debugger;
+			setFormErrors(errors);
 			return;
 		}
 
@@ -108,9 +110,9 @@ function EditForm() {
 							/>
 						</div>
 
-						{/* {formErrors.length ? <Alert type='danger' messages={formErrors} /> : null}
+						{formErrors.length ? <Alert type='danger' messages={formErrors} /> : null}
 
-						{saveConfirmed ? <Alert type='success' messages={[ 'Updated successfully.' ]} /> : null} */}
+						{/* {saveConfirmed ? <Alert type='success' messages={[ 'Updated successfully.' ]} /> : null} */}
 
 						<button className='btn btn-primary btn-block mt-4' onClick={handleSubmit}>
 							Save Changes

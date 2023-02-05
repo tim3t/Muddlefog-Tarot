@@ -6,15 +6,19 @@ import UserContext from '../Auth/UserContext';
 import SaveSpreadForm from '../Profile/SaveSpreadForm';
 
 const Home = () => {
-	const today = new Date().toLocaleDateString('en-GB', {
-		day: 'numeric',
-		month: 'short',
-		year: 'numeric'
-	});
+	const today = new Date().toDateString();
+	console.log(today);
 
 	const { currentUser } = useContext(UserContext);
 	const [ cardDraws, setCardDraws ] = useState([]);
 	const [ saveForm, setSaveForm ] = useState();
+
+	// // create a method updateTarotCard
+	// function updateTarotCard(cardPull) {
+	// 	console.log('------Card is', cardPull);
+	// 	console.log('------CardDraws are', cardDraws);
+	// 	setCardDraws([ ...cardDraws, ...cardPull ]);
+	// }
 
 	function addCard() {
 		setCardDraws(cardDraws.concat(<TarotCard />));

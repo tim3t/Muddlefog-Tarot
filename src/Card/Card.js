@@ -6,7 +6,7 @@ import backOfCard from '../cardImages/back.jpeg';
 // ↓↓↓ 78 Tarot Card Images imported for use - public domain ↓↓↓
 import cardImports from './cardImports';
 
-const TarotCard = ({}) => {
+const TarotCard = ({ updateTarotCard }) => {
 	const [ isFlipped, setFlipped ] = useState(true);
 	const flip = () => {
 		setFlipped(!isFlipped);
@@ -23,7 +23,10 @@ const TarotCard = ({}) => {
 		keywords: cards[randomCardNumber].keywords
 	};
 
+	// updateTarotCard(cardPull);
+
 	const [ card, setCard ] = useState(cardPull);
+
 	useEffect(
 		() => {
 			cardArray.push(card);
@@ -31,6 +34,7 @@ const TarotCard = ({}) => {
 		},
 		[ cardPull ]
 	);
+
 	return (
 		<div className='Card'>
 			<img src={isFlipped ? backOfCard : card.image} alt={card.name} className='Card-img' onClick={flip} />

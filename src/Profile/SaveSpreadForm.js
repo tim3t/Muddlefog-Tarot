@@ -2,17 +2,16 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TarotApi from '../api/api';
 import UserContext from '../Auth/UserContext';
+import { FormGroup, FormControl } from 'react-bootstrap';
+import Alert from '../common/Alert';
 
 function SaveSpreadForm() {
-	const today = new Date().toLocaleDateString('en-GB', {
-		day: 'numeric',
-		month: 'short',
-		year: 'numeric'
-	});
-
+	const today = new Date().toDateString();
+	console.debug('SaveSpreadForm - ', today);
 	const history = useNavigate();
 
 	const { currentUser } = useContext(UserContext);
+	const [ formErrors, setFormErrors ] = useState([]);
 	const [ formData, setFormData ] = useState({
 		timedate: today,
 		title: '',
@@ -67,7 +66,7 @@ function SaveSpreadForm() {
 	}
 
 	return (
-		<div className='col-md-6 col-lg-4 offset-md-3 offset-lg-4'>
+		<FormGroup className='col-md-6 col-lg-4 offset-md-3 offset-lg-4'>
 			<h3>Save This Spread</h3>
 			<div className='card'>
 				<div className='card-body'>
@@ -75,6 +74,7 @@ function SaveSpreadForm() {
 						<div className='form-group'>
 							<label>Title</label>
 							<input
+								required
 								name='title'
 								className='form-control'
 								value={formData.title}
@@ -84,6 +84,7 @@ function SaveSpreadForm() {
 						<div className='form-group'>
 							<label>Cards Drawn</label>
 							<input
+								required
 								name='spread'
 								className='form-control'
 								value={formData.spread}
@@ -92,9 +93,10 @@ function SaveSpreadForm() {
 						</div>
 						<div className='form-group'>
 							<label>Comments</label>
-							<input
-								type='textarea'
+							<FormControl
+								as='textarea'
 								name='comments'
+								rows={3}
 								className='form-control'
 								value={formData.comments}
 								onChange={handleChange}
@@ -112,7 +114,8 @@ function SaveSpreadForm() {
 					</form>
 				</div>
 			</div>
-		</div>
+			{formErrors.length ? <Alert type='danger' messages={formErrors} /> : null}
+		</FormGroup>
 	);
 }
 

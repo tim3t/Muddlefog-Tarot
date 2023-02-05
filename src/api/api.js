@@ -59,6 +59,11 @@ class TarotApi {
 		let res = await this.request(`spreads/${username}`);
 		return res.userSpreads;
 	}
+
+	static async deleteSpread(username, id) {
+		let res = await this.request(`spreads/${username}/${id}`, null, 'delete');
+		return res;
+	}
 }
 
 export default TarotApi;
