@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
+// Bootstrap modal to pop-up and warn when deleting - cancel will hide modal, confirm will delete item based on id
+
 const DeleteConfirm = ({ showModal, hideModal, confirmModal, id, message }) => {
 	return (
 		<Modal show={showModal} onHide={hideModal}>

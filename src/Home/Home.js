@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import TarotCard from '../Card/Card';
 import './Home.css';
 import { Button } from 'react-bootstrap';
@@ -7,18 +7,10 @@ import SaveSpreadForm from '../Profile/SaveSpreadForm';
 
 const Home = () => {
 	const today = new Date().toDateString();
-	console.log(today);
 
 	const { currentUser } = useContext(UserContext);
 	const [ cardDraws, setCardDraws ] = useState([]);
 	const [ saveForm, setSaveForm ] = useState();
-
-	// // create a method updateTarotCard
-	// function updateTarotCard(cardPull) {
-	// 	console.log('------Card is', cardPull);
-	// 	console.log('------CardDraws are', cardDraws);
-	// 	setCardDraws([ ...cardDraws, ...cardPull ]);
-	// }
 
 	function addCard() {
 		setCardDraws(cardDraws.concat(<TarotCard />));
@@ -66,11 +58,7 @@ const Home = () => {
 				<h3 className='Home-User-Head'>
 					{currentUser.username}'s Tarot Spread for {today}
 				</h3>
-				{/* <label htmlFor='checkbox' className='Home-switch'>
-					Toggle Meanings
-					<input type='checkbox' />
-					<span className='Home-switch-slider round' />
-				</label> */}
+
 				<div className='Home-Button-Layout'>
 					<Button
 						className='Home-Button-Draw'

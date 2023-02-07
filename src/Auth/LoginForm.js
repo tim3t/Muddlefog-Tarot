@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
  * Shows form and manages update to state on changes.
  * On submission:
  * - calls login function prop
- * - redirects to /companies route
+ * - redirects to / route
  *
  * Routes -> LoginForm -> Alert
  * Routed as /login
@@ -22,7 +22,7 @@ function LoginForm({ login }) {
 
 	/** Handle form submit:
    *
-   * Calls login func prop and, if successful, redirect to /companies.
+   * Calls login func prop and, if successful, redirect to /.
    */
 
 	async function handleSubmit(evt) {

@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TarotApi from '../api/api';
 import UserContext from '../Auth/UserContext';
-import { FormGroup, FormControl } from 'react-bootstrap';
+import { Form, InputGroup, FormControl } from 'react-bootstrap';
 import Alert from '../common/Alert';
+
+// Used to save a spread to the database so that a user can look back over saved spreads and see patterns in card draws or particularly interesting card pulls that they wanted to retain. Renders on the Home page under the CardTable
 
 function SaveSpreadForm() {
 	const today = new Date().toDateString();
-	console.debug('SaveSpreadForm - ', today);
 	const history = useNavigate();
 
 	const { currentUser } = useContext(UserContext);
@@ -19,8 +20,7 @@ function SaveSpreadForm() {
 		comments: '',
 		username: currentUser.username
 	});
-	// const [ formErrors, setFormErrors ] = useState([]);
-
+	const [ validated, setValidated ] = useState(false);
 	/** on form submit:
 	   * - attempt save to backend & report any errors
 	   * - if successful
@@ -30,7 +30,15 @@ function SaveSpreadForm() {
 	   */
 
 	async function handleSubmit(evt) {
-		evt.preventDefault();
+		const form = evt.currentTarget;
+		if (form.checkValidity() === false) {
+			evt.preventDefault();
+			evt.stopPropagation();
+		}
+		else {
+		}
+		setValidated(true);
+		history('/profile');
 
 		let spreadData = {
 			timedate: today,
@@ -46,14 +54,11 @@ function SaveSpreadForm() {
 		try {
 			newSpread = await TarotApi.newSpread(username, spreadData);
 		} catch (errors) {
-			console.debug(errors);
+			setFormErrors(errors);
 			return;
 		}
 
 		setFormData((f) => ({ ...f }));
-		history('/profile');
-
-		// // trigger reloading of user information throughout the site
 	}
 
 	/** Handle form data changing */
@@ -66,56 +71,53 @@ function SaveSpreadForm() {
 	}
 
 	return (
-		<FormGroup className='col-md-6 col-lg-4 offset-md-3 offset-lg-4'>
-			<h3>Save This Spread</h3>
-			<div className='card'>
-				<div className='card-body'>
-					<form>
-						<div className='form-group'>
-							<label>Title</label>
-							<input
-								required
-								name='title'
-								className='form-control'
-								value={formData.title}
-								onChange={handleChange}
-							/>
-						</div>
-						<div className='form-group'>
-							<label>Cards Drawn</label>
-							<input
-								required
-								name='spread'
-								className='form-control'
-								value={formData.spread}
-								onChange={handleChange}
-							/>
-						</div>
-						<div className='form-group'>
-							<label>Comments</label>
-							<FormControl
-								as='textarea'
-								name='comments'
-								rows={3}
-								className='form-control'
-								value={formData.comments}
-								onChange={handleChange}
-							/>
-						</div>
-						<p>{today}</p>
-						<p>{currentUser.username}</p>
-						{/* {formErrors.length ? <Alert type='danger' messages={formErrors} /> : null}
+		<Form validated={validated} onSubmit={handleSubmit} className='col-md-6 col-lg-6 offset-md-3 offset-lg-3'>
+			<Form.Group controlId='validationCustom01'>
+				<Form.Label>Title</Form.Label>
+				<InputGroup hasValidation>
+					<Form.Control
+						required
+						name='title'
+						type='text'
+						placeholder='Title'
+						value={formData.title}
+						onChange={handleChange}
+					/>
+					<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+					<Form.Control.Feedback type='invalid'>Please include a title</Form.Control.Feedback>
+				</InputGroup>
+			</Form.Group>
+			<Form.Group>
+				<Form.Label>Cards Drawn</Form.Label>
+				<Form.Control
+					required
+					name='spread'
+					placeholder='Cards Drawn'
+					value={formData.spread}
+					onChange={handleChange}
+				/>
+			</Form.Group>
+			<Form.Group>
+				<Form.Label>Comments</Form.Label>
+				<FormControl
+					as='textarea'
+					name='comments'
+					placeholder='Comments'
+					rows={3}
+					value={formData.comments}
+					onChange={handleChange}
+				/>
+			</Form.Group>
+			<p>{today}</p>
+			<p>{currentUser.username}</p>
+			{/* {formErrors.length ? <Alert type='danger' messages={formErrors} /> : null}
 
 						{saveConfirmed ? <Alert type='success' messages={[ 'Updated successfully.' ]} /> : null} */}
 
-						<button className='btn btn-primary btn-block mt-4' onClick={handleSubmit}>
-							Save Changes
-						</button>
-					</form>
-				</div>
-			</div>
+			<button type='submit'>Save Spread</button>
+
 			{formErrors.length ? <Alert type='danger' messages={formErrors} /> : null}
-		</FormGroup>
+		</Form>
 	);
 }
 
