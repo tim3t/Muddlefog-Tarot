@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignupForm.css';
+import Alert from '../common/Alert';
 
 function SignupForm({ signup }) {
 	const history = useNavigate();
 	const [ formData, setFormData ] = useState({ username: '', password: '', firstName: '', lastName: '', email: '' });
+	const [ formErrors, setFormErrors ] = useState([]);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -14,6 +16,7 @@ function SignupForm({ signup }) {
 		}
 		else {
 			console.log(result.errors);
+			setFormErrors(result.errors);
 		}
 	}
 
@@ -79,6 +82,7 @@ function SignupForm({ signup }) {
 						<button type='submit' className='btn btn-primary' onSubmit={handleSubmit}>
 							Submit
 						</button>
+						{formErrors.length ? <Alert messages={formErrors} /> : null}
 					</form>
 				</div>
 			</div>

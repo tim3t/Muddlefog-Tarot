@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Alert from '../common/Alert';
 
 /** Login form.
  *
@@ -77,6 +78,7 @@ function LoginForm({ login }) {
 							<button className='btn btn-primary' onSubmit={handleSubmit}>
 								Submit
 							</button>
+							{formErrors.length ? <Alert messages={formErrors} /> : null}
 						</form>
 					</div>
 				</div>

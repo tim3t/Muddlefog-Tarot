@@ -89,7 +89,7 @@ const Profile = () => {
 						return (
 							<React.Fragment>
 								<tr>
-									<td>{spread.timedate}</td>
+									<td>{spread.timedate.toString().slice(0, 10)}</td>
 
 									<td>{spread.title}</td>
 									<td>{spread.spread}</td>

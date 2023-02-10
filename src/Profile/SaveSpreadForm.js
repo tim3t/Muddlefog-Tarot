@@ -7,8 +7,8 @@ import Alert from '../common/Alert';
 
 // Used to save a spread to the database so that a user can look back over saved spreads and see patterns in card draws or particularly interesting card pulls that they wanted to retain. Renders on the Home page under the CardTable
 
-function SaveSpreadForm() {
-	const today = new Date().toDateString();
+function SaveSpreadForm({ cardNames }) {
+	const today = new Date().toLocaleString('en', { month: 'long', day: 'numeric', year: 'numeric' });
 	const history = useNavigate();
 
 	const { currentUser } = useContext(UserContext);
@@ -28,7 +28,7 @@ function SaveSpreadForm() {
 	   *   - show save-confirmed message
 	   *   - set current user info throughout the site
 	   */
-
+	console.log();
 	async function handleSubmit(evt) {
 		const form = evt.currentTarget;
 		if (form.checkValidity() === false) {

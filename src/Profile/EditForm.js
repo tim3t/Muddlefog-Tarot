@@ -41,7 +41,6 @@ function EditForm() {
 		try {
 			updatedUser = await TarotApi.saveProfile(username, profileData);
 		} catch (errors) {
-			debugger;
 			setFormErrors(errors);
 			return;
 		}
