@@ -4,6 +4,7 @@ import TarotApi from '../api/api';
 import UserContext from '../Auth/UserContext';
 import { Form, InputGroup, FormControl } from 'react-bootstrap';
 import Alert from '../common/Alert';
+import './Profile.css';
 
 // Used to save a spread to the database so that a user can look back over saved spreads and see patterns in card draws or particularly interesting card pulls that they wanted to retain. Renders on the Home page under the CardTable
 

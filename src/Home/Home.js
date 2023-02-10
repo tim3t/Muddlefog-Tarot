@@ -94,7 +94,7 @@ const Home = () => {
 								Save This Spread
 							</Button>
 						</div>
-						<div>{saveForm}</div>
+						<div className='Home-Save-Form'>{saveForm}</div>
 						<div className='d-grid gap-2 Home-Button-Clear'>
 							<Button onClick={clearCards} variant='light' size='lg'>
 								Clear all cards

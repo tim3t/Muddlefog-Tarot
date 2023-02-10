@@ -16,3 +16,12 @@
 .Profile-DeleteBtn{
     cursor:pointer;
 }
+
+Form:hover{
+    -webkit-animation: slide 3s forwards;
+    animation: 3s slide forwards;
+}
+
+@keyframes slide{
+    100% {left:0;}
+}
